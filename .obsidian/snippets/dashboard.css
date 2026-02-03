@@ -1,124 +1,345 @@
 /*
- * Life OS Dashboard Theme 2026
- * Modern, vibrant, glass-morphism inspired
+ * Life OS Dashboard - SlRvb Inspired Theme 2026
+ * Multi-column callouts, colored sections, modern UI
  */
 
-/* ========== VARIABLES ========== */
+/* ========== ROOT VARIABLES ========== */
 .theme-dark {
-  --dashboard-bg: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --card-border: rgba(255, 255, 255, 0.1);
-  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --accent-primary: #667eea;
-  --accent-secondary: #764ba2;
-  --accent-tertiary: #f093fb;
-  --text-glow: 0 0 20px rgba(102, 126, 234, 0.5);
-  --neon-pink: #ff006e;
-  --neon-cyan: #00f5d4;
-  --neon-purple: #9b5de5;
-  --neon-yellow: #fee440;
+  --dashboard-bg: #0d1117;
+  --card-bg: rgba(22, 27, 34, 0.95);
+  --card-border: rgba(48, 54, 61, 0.8);
+  --text-normal: #e6edf3;
+  --text-muted: #8b949e;
+
+  /* Callout Colors */
+  --callout-green: #238636;
+  --callout-green-bg: rgba(35, 134, 54, 0.15);
+  --callout-yellow: #d29922;
+  --callout-yellow-bg: rgba(210, 153, 34, 0.15);
+  --callout-cyan: #39c5cf;
+  --callout-cyan-bg: rgba(57, 197, 207, 0.15);
+  --callout-purple: #a371f7;
+  --callout-purple-bg: rgba(163, 113, 247, 0.15);
+  --callout-orange: #f0883e;
+  --callout-orange-bg: rgba(240, 136, 62, 0.15);
+  --callout-pink: #ff7eb6;
+  --callout-pink-bg: rgba(255, 126, 182, 0.15);
+  --callout-blue: #58a6ff;
+  --callout-blue-bg: rgba(88, 166, 255, 0.15);
+  --callout-gray: #8b949e;
+  --callout-gray-bg: rgba(139, 148, 158, 0.1);
+  --callout-teal: #3fb950;
+  --callout-teal-bg: rgba(63, 185, 80, 0.15);
+  --callout-indigo: #8b5cf6;
+  --callout-indigo-bg: rgba(139, 92, 246, 0.15);
+  --callout-red: #f85149;
+  --callout-red-bg: rgba(248, 81, 73, 0.15);
 }
 
 .theme-light {
-  --dashboard-bg: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --card-border: rgba(0, 0, 0, 0.1);
-  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --accent-primary: #667eea;
-  --accent-secondary: #764ba2;
-  --accent-tertiary: #f093fb;
-  --text-glow: none;
-  --neon-pink: #ff006e;
-  --neon-cyan: #00b4a0;
-  --neon-purple: #7c3aed;
-  --neon-yellow: #f59e0b;
+  --dashboard-bg: #ffffff;
+  --card-bg: rgba(246, 248, 250, 0.95);
+  --card-border: rgba(208, 215, 222, 0.8);
+  --text-normal: #24292f;
+  --text-muted: #57606a;
+
+  --callout-green: #1a7f37;
+  --callout-green-bg: rgba(26, 127, 55, 0.1);
+  --callout-yellow: #9a6700;
+  --callout-yellow-bg: rgba(154, 103, 0, 0.1);
+  --callout-cyan: #0969da;
+  --callout-cyan-bg: rgba(9, 105, 218, 0.1);
+  --callout-purple: #8250df;
+  --callout-purple-bg: rgba(130, 80, 223, 0.1);
+  --callout-orange: #bc4c00;
+  --callout-orange-bg: rgba(188, 76, 0, 0.1);
+  --callout-pink: #bf3989;
+  --callout-pink-bg: rgba(191, 57, 137, 0.1);
+  --callout-blue: #0969da;
+  --callout-blue-bg: rgba(9, 105, 218, 0.1);
+  --callout-gray: #57606a;
+  --callout-gray-bg: rgba(87, 96, 106, 0.08);
+  --callout-teal: #1a7f37;
+  --callout-teal-bg: rgba(26, 127, 55, 0.1);
+  --callout-indigo: #6639ba;
+  --callout-indigo-bg: rgba(102, 57, 186, 0.1);
+  --callout-red: #cf222e;
+  --callout-red-bg: rgba(207, 34, 46, 0.1);
 }
 
-/* ========== DASHBOARD PAGE ========== */
+/* ========== DASHBOARD BASE ========== */
 .dashboard .markdown-preview-view {
-  padding: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--dashboard-bg);
 }
 
 .dashboard .markdown-preview-sizer {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
+}
+
+/* ========== DASHBOARD HEADER ========== */
+.dashboard .dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard .profile-section img {
+  border-radius: 50%;
+  border: 3px solid var(--callout-purple);
+  box-shadow: 0 0 20px rgba(163, 113, 247, 0.3);
+}
+
+.dashboard .clock-section {
+  text-align: center;
 }
 
 /* ========== HEADINGS ========== */
 .dashboard h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 800;
   text-align: center;
-  background: var(--accent-gradient);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 0.5rem;
-  text-shadow: var(--text-glow);
-  letter-spacing: -0.02em;
+  margin: 0;
 }
 
 .dashboard h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--accent-primary);
+  color: var(--text-normal);
   border-bottom: 2px solid var(--card-border);
   padding-bottom: 0.5rem;
-  margin-top: 2rem;
+  margin: 2rem 0 1rem 0;
+}
+
+/* ========== MULTI-COLUMN LAYOUT ========== */
+.dashboard .callout[data-callout="multi-column"] {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.dashboard .callout[data-callout="multi-column"] > .callout-title {
+  display: none;
+}
+
+.dashboard .callout[data-callout="multi-column"] > .callout-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
+}
+
+.dashboard .callout[data-callout="multi-column"] > .callout-content > * {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ========== CALLOUT CARDS ========== */
+.dashboard .callout {
+  border-radius: 12px;
+  padding: 0;
+  margin: 0.5rem 0;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+}
+
+.dashboard .callout > .callout-title {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.dashboard h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  margin-top: 1.5rem;
+.dashboard .callout > .callout-title .callout-icon {
+  display: none;
 }
 
-/* ========== CARDS / SECTIONS ========== */
-.dashboard .dataview {
-  background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-  padding: 1.25rem;
-  margin: 1rem 0;
-  box-shadow: var(--card-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.dashboard .callout > .callout-content {
+  padding: 0.5rem 1rem 1rem 1rem;
 }
 
-.dashboard .dataview:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+/* ========== COLOR VARIANTS ========== */
+/* Green */
+.dashboard .callout[data-callout-metadata*="green"] > .callout-title {
+  background: var(--callout-green-bg);
+  color: var(--callout-green);
+  border-bottom: 2px solid var(--callout-green);
+}
+
+/* Yellow */
+.dashboard .callout[data-callout-metadata*="yellow"] > .callout-title {
+  background: var(--callout-yellow-bg);
+  color: var(--callout-yellow);
+  border-bottom: 2px solid var(--callout-yellow);
+}
+
+/* Cyan */
+.dashboard .callout[data-callout-metadata*="cyan"] > .callout-title {
+  background: var(--callout-cyan-bg);
+  color: var(--callout-cyan);
+  border-bottom: 2px solid var(--callout-cyan);
+}
+
+/* Purple */
+.dashboard .callout[data-callout-metadata*="purple"] > .callout-title {
+  background: var(--callout-purple-bg);
+  color: var(--callout-purple);
+  border-bottom: 2px solid var(--callout-purple);
+}
+
+/* Orange */
+.dashboard .callout[data-callout-metadata*="orange"] > .callout-title {
+  background: var(--callout-orange-bg);
+  color: var(--callout-orange);
+  border-bottom: 2px solid var(--callout-orange);
+}
+
+/* Pink */
+.dashboard .callout[data-callout-metadata*="pink"] > .callout-title {
+  background: var(--callout-pink-bg);
+  color: var(--callout-pink);
+  border-bottom: 2px solid var(--callout-pink);
+}
+
+/* Blue */
+.dashboard .callout[data-callout-metadata*="blue"] > .callout-title {
+  background: var(--callout-blue-bg);
+  color: var(--callout-blue);
+  border-bottom: 2px solid var(--callout-blue);
+}
+
+/* Gray */
+.dashboard .callout[data-callout-metadata*="gray"] > .callout-title {
+  background: var(--callout-gray-bg);
+  color: var(--callout-gray);
+  border-bottom: 2px solid var(--callout-gray);
+}
+
+/* Teal */
+.dashboard .callout[data-callout-metadata*="teal"] > .callout-title {
+  background: var(--callout-teal-bg);
+  color: var(--callout-teal);
+  border-bottom: 2px solid var(--callout-teal);
+}
+
+/* Indigo */
+.dashboard .callout[data-callout-metadata*="indigo"] > .callout-title {
+  background: var(--callout-indigo-bg);
+  color: var(--callout-indigo);
+  border-bottom: 2px solid var(--callout-indigo);
+}
+
+/* Clean - no decoration */
+.dashboard .callout[data-callout-metadata*="clean"] {
+  background: transparent;
+  border: none;
+}
+
+.dashboard .callout[data-callout-metadata*="clean"] > .callout-title {
+  background: transparent;
+  border: none;
+}
+
+/* Book / Media callouts */
+.dashboard .callout[data-callout-metadata*="book"] > .callout-title {
+  background: rgba(139, 92, 246, 0.15);
+  color: #8b5cf6;
+  border-bottom: 2px solid #8b5cf6;
+}
+
+.dashboard .callout[data-callout-metadata*="tv"] > .callout-title {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  border-bottom: 2px solid #3b82f6;
+}
+
+.dashboard .callout[data-callout-metadata*="game"] > .callout-title {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border-bottom: 2px solid #22c55e;
+}
+
+/* ========== LISTS IN CALLOUTS ========== */
+.dashboard .callout ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard .callout li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.dashboard .callout li:last-child {
+  border-bottom: none;
+}
+
+.dashboard .callout a.internal-link {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.dashboard .callout a.internal-link:hover {
+  color: var(--callout-purple);
+}
+
+/* ========== DATAVIEW IN CALLOUTS ========== */
+.dashboard .callout .dataview {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.dashboard .callout .dataview ul {
+  padding: 0;
+}
+
+.dashboard .callout .dataview ul li {
+  padding: 0.35rem 0;
+}
+
+.dashboard .callout .dataview ul li::before {
+  content: "•";
+  margin-right: 0.5rem;
+  opacity: 0.5;
 }
 
 /* ========== TABLES ========== */
 .dashboard table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  margin: 1rem 0;
+  font-size: 0.9rem;
 }
 
 .dashboard th {
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: white;
+  background: rgba(102, 126, 234, 0.2);
+  color: var(--text-normal);
   font-weight: 600;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   text-align: left;
+  border-bottom: 2px solid var(--callout-purple);
 }
 
 .dashboard td {
-  padding: 0.875rem 1rem;
+  padding: 0.6rem 1rem;
   border-bottom: 1px solid var(--card-border);
 }
 
@@ -127,51 +348,75 @@
 }
 
 .dashboard tr:hover td {
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(102, 126, 234, 0.05);
 }
 
-/* ========== QUICK ACTIONS GRID ========== */
-.dashboard table:first-of-type {
+/* ========== QUICK ACTIONS TABLE ========== */
+.dashboard h2 + table,
+.dashboard h2 + p + table {
   background: transparent;
 }
 
-.dashboard table:first-of-type td {
+.dashboard h2 + table td,
+.dashboard h2 + p + table td {
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
   border: 1px solid var(--card-border);
-  border-radius: 12px;
-  margin: 0.5rem;
-  padding: 1.25rem;
+  border-radius: 10px;
+  padding: 1rem;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
-.dashboard table:first-of-type td:hover {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
-}
-
-.dashboard table:first-of-type a {
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
+.dashboard h2 + table td:hover,
+.dashboard h2 + p + table td:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  border-color: var(--callout-purple);
 }
 
 /* ========== BLOCKQUOTES ========== */
-.dashboard blockquote {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  border-left: 4px solid var(--accent-primary);
-  border-radius: 0 12px 12px 0;
-  padding: 1.25rem 1.5rem;
-  margin: 1.5rem 0;
+.dashboard blockquote:not(.callout) {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
+  border-left: 4px solid var(--callout-purple);
+  border-radius: 0 10px 10px 0;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* ========== QUOTE CALLOUT ========== */
+.dashboard .callout[data-callout="quote"] {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(240, 147, 251, 0.05));
+  border: none;
+  text-align: center;
+}
+
+.dashboard .callout[data-callout="quote"] .callout-title {
+  display: none;
+}
+
+.dashboard .callout[data-callout="quote"] .callout-content {
+  font-size: 1.15rem;
   font-style: italic;
-  color: var(--text-muted);
+  padding: 0.75rem 1rem;
+}
+
+/* ========== HR / DIVIDERS ========== */
+.dashboard hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--card-border), transparent);
+  margin: 1.5rem 0;
 }
 
 /* ========== TASKS ========== */
+.dashboard .contains-task-list {
+  padding: 0;
+}
+
 .dashboard .task-list-item {
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
   border-bottom: 1px solid var(--card-border);
 }
 
@@ -179,120 +424,109 @@
   border-bottom: none;
 }
 
-.dashboard .task-list-item-checkbox {
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 6px;
-  border: 2px solid var(--accent-primary);
-  margin-right: 0.75rem;
+.dashboard input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  accent-color: var(--callout-purple);
 }
 
-.dashboard .task-list-item-checkbox:checked {
-  background: var(--accent-gradient);
+/* ========== TODO / DONE CALLOUTS ========== */
+.dashboard .callout[data-callout="todo"] > .callout-title {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border-bottom: 2px solid #f59e0b;
 }
 
-/* ========== LISTS ========== */
-.dashboard ul {
-  list-style: none;
-  padding-left: 0;
+.dashboard .callout[data-callout="done"] > .callout-title {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border-bottom: 2px solid #22c55e;
 }
 
-.dashboard .dataview ul li {
-  padding: 0.625rem 0;
-  border-bottom: 1px solid var(--card-border);
-  display: flex;
-  align-items: center;
+/* ========== WIDE CLASSES ========== */
+.dashboard .callout[data-callout-metadata*="wide-1"] {
+  flex: 1 !important;
 }
 
-.dashboard .dataview ul li::before {
-  content: "→";
-  color: var(--accent-primary);
-  margin-right: 0.75rem;
-  font-weight: bold;
+.dashboard .callout[data-callout-metadata*="wide-2"] {
+  flex: 2 !important;
 }
 
-.dashboard .dataview ul li:last-child {
-  border-bottom: none;
+.dashboard .callout[data-callout-metadata*="wide-3"] {
+  flex: 1 !important;
+  min-width: 220px;
 }
 
-/* ========== LINKS ========== */
-.dashboard a.internal-link {
-  color: var(--accent-primary);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
+/* ========== INLINE DATAVIEW ========== */
+.dashboard code.language-dataviewjs,
+.dashboard code.language-dataview {
+  display: block;
 }
 
-.dashboard a.internal-link:hover {
-  color: var(--accent-tertiary);
-  text-shadow: 0 0 10px rgba(240, 147, 251, 0.5);
-}
+/* ========== MOBILE RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .dashboard .callout[data-callout="multi-column"] > .callout-content {
+    flex-direction: column;
+  }
 
-/* ========== HR / DIVIDERS ========== */
-.dashboard hr {
-  border: none;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent);
-  margin: 2rem 0;
-}
+  .dashboard .callout[data-callout-metadata*="wide-2"],
+  .dashboard .callout[data-callout-metadata*="wide-3"] {
+    flex: 1 !important;
+    min-width: 100%;
+  }
 
-/* ========== HABIT TRACKER TABLE ========== */
-.dashboard table:has(th:contains("Habitude")) td {
-  text-align: center;
-  min-width: 40px;
-}
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 768px) {
   .dashboard h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
-  .dashboard .markdown-preview-view {
-    padding: 1rem;
-  }
-
-  .dashboard table:first-of-type {
-    display: block;
-  }
-
-  .dashboard table:first-of-type td {
-    display: block;
-    margin: 0.5rem 0;
+  .dashboard .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
   }
 }
 
-/* ========== ANIMATIONS ========== */
-@keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
-  }
+/* ========== SCROLLBARS ========== */
+.dashboard ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.dashboard .dataview.important {
-  animation: pulse-glow 2s infinite;
+.dashboard ::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-/* ========== NEON ACCENTS ========== */
-.dashboard .neon-pink {
-  color: var(--neon-pink);
-  text-shadow: 0 0 10px var(--neon-pink);
-}
-
-.dashboard .neon-cyan {
-  color: var(--neon-cyan);
-  text-shadow: 0 0 10px var(--neon-cyan);
-}
-
-.dashboard .neon-purple {
-  color: var(--neon-purple);
-  text-shadow: 0 0 10px var(--neon-purple);
+.dashboard ::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 3px;
 }
 
 /* ========== WIDE PAGE ========== */
 .wide-page .markdown-preview-sizer {
   max-width: 100% !important;
+  width: 100%;
+}
+
+/* ========== INFO CALLOUT ========== */
+.dashboard .callout[data-callout="info"] {
+  background: var(--card-bg);
+}
+
+.dashboard .callout[data-callout="info"] > .callout-title {
+  display: none;
+}
+
+.dashboard .callout[data-callout="info"] > .callout-content {
+  text-align: center;
+  padding: 1rem;
+}
+
+.dashboard .callout[data-callout="info"] a {
+  color: var(--text-muted);
+  margin: 0 0.25rem;
+}
+
+.dashboard .callout[data-callout="info"] a:hover {
+  color: var(--callout-purple);
 }

@@ -1,70 +1,153 @@
-# 🎬 MediaDB
+---
+cssclasses:
+  - wide-page
+---
 
-> Ta base de données personnelle pour films, séries, jeux, livres et musique.
+# MediaDB
 
-## 📊 Vue d'ensemble
+> Ma base de donnees personnelle pour tracker films, series, jeux, livres et musique.
 
-### 🎬 Films
+---
+
+## Vue d'ensemble
+
+| 🎬 Films | 📺 Series | 🎮 Jeux | 📚 Livres |
+|:--------:|:---------:|:-------:|:---------:|
+| `$= dv.pages('"07-MediaDB/Films"').length` | `$= dv.pages('"07-MediaDB/Séries"').length` | `$= dv.pages('"07-MediaDB/Jeux"').length` | `$= dv.pages('"07-MediaDB/Livres"').length` |
+
+---
+
+## 🎬 Films
+
+### A voir
 ```dataview
 TABLE WITHOUT ID
-  file.link as "Film",
-  rating as "Note",
-  status as "Statut",
-  year as "Année"
+  file.link as "Titre",
+  year as "Annee",
+  genre as "Genre"
 FROM "07-MediaDB/Films"
-SORT rating DESC
-LIMIT 10
+WHERE status = "🎬 à voir" OR status = "👀 en cours"
+SORT date_added DESC
 ```
 
-### 📺 Séries
+### Recemment vus
 ```dataview
 TABLE WITHOUT ID
-  file.link as "Série",
-  rating as "Note",
-  status as "Statut",
-  current_episode as "Épisode"
+  file.link as "Titre",
+  rating + "/10" as "Note",
+  date_watched as "Vu le"
+FROM "07-MediaDB/Films"
+WHERE status = "✅ vu"
+SORT date_watched DESC
+LIMIT 5
+```
+
+---
+
+## 📺 Series
+
+### En cours
+```dataview
+TABLE WITHOUT ID
+  file.link as "Titre",
+  "S" + current_season + "E" + current_episode as "Progress",
+  platform as "Plateforme"
 FROM "07-MediaDB/Séries"
 WHERE status = "👀 en cours"
 SORT file.mtime DESC
 ```
 
-### 🎮 Jeux
+### Terminees recemment
 ```dataview
 TABLE WITHOUT ID
-  file.link as "Jeu",
-  rating as "Note",
-  status as "Statut",
-  playtime as "Temps joué"
+  file.link as "Titre",
+  rating + "/10" as "Note",
+  seasons + " saisons" as "Saisons"
+FROM "07-MediaDB/Séries"
+WHERE status = "✅ terminee"
+SORT date_finished DESC
+LIMIT 5
+```
+
+---
+
+## 🎮 Jeux
+
+### En cours
+```dataview
+TABLE WITHOUT ID
+  file.link as "Titre",
+  playtime + "h" as "Temps",
+  completion + "%" as "Completion"
 FROM "07-MediaDB/Jeux"
-SORT rating DESC
-LIMIT 10
+WHERE status = "🎮 en cours"
+SORT playtime DESC
 ```
 
-### 📚 Livres
+### Completes
 ```dataview
 TABLE WITHOUT ID
-  file.link as "Livre",
+  file.link as "Titre",
+  rating + "/10" as "Note",
+  playtime + "h" as "Temps total"
+FROM "07-MediaDB/Jeux"
+WHERE status = "✅ termine"
+SORT date_finished DESC
+LIMIT 5
+```
+
+---
+
+## 📚 Livres
+
+### En lecture
+```dataview
+TABLE WITHOUT ID
+  file.link as "Titre",
   author as "Auteur",
-  rating as "Note",
-  status as "Statut"
+  current_page + "/" + pages as "Pages"
 FROM "07-MediaDB/Livres"
+WHERE status = "👀 en cours"
+SORT file.mtime DESC
+```
+
+### Lus recemment
+```dataview
+TABLE WITHOUT ID
+  file.link as "Titre",
+  author as "Auteur",
+  rating + "/10" as "Note"
+FROM "07-MediaDB/Livres"
+WHERE status = "✅ lu"
+SORT date_finished DESC
+LIMIT 5
+```
+
+---
+
+## ⭐ Top Rated (9+/10)
+
+```dataview
+TABLE WITHOUT ID
+  file.link as "Titre",
+  type as "Type",
+  rating + "/10" as "Note"
+FROM "07-MediaDB"
+WHERE rating >= 9
 SORT rating DESC
 LIMIT 10
 ```
 
-## 📈 Statistiques
+---
 
-### Par statut
-```dataview
-TABLE WITHOUT ID
-  length(rows) as "Total"
-FROM "07-MediaDB"
-WHERE file.name != "README"
-GROUP BY status
-```
+## Quick Add
 
-## 🏷️ Raccourcis
-- `Ctrl+Shift+F` - Ajouter un film
-- `Ctrl+Shift+S` - Ajouter une série
-- `Ctrl+Shift+L` - Ajouter un livre
-- `Ctrl+Shift+G` - Ajouter un jeu
+| | | | |
+|:---:|:---:|:---:|:---:|
+| [[09-Templates/Film\|🎬 Film]] | [[09-Templates/Série\|📺 Serie]] | [[09-Templates/Jeu\|🎮 Jeu]] | [[09-Templates/Livre\|📚 Livre]] |
+
+### Raccourcis QuickAdd
+- `Ctrl+Shift+A` puis `Film` - Ajouter un film
+- `Ctrl+Shift+A` puis `Serie` - Ajouter une serie
+- `Ctrl+Shift+A` puis `Livre` - Ajouter un livre
+- `Ctrl+Shift+A` puis `Jeu` - Ajouter un jeu

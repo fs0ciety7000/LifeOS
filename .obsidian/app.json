@@ -1,0 +1,22 @@
+{
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "00-Inbox",
+  "attachmentFolderPath": "99-Attachments",
+  "defaultViewMode": "preview",
+  "foldHeading": true,
+  "foldIndent": true,
+  "showLineNumber": true,
+  "spellcheck": true,
+  "spellcheckLanguages": ["fr", "en-US"],
+  "theme": "obsidian",
+  "cssTheme": "",
+  "baseFontSize": 16,
+  "enabledCssSnippets": ["dashboard", "global-theme"],
+  "promptDelete": false,
+  "strictLineBreaks": false,
+  "showFrontmatter": false,
+  "nativeMenus": null,
+  "livePreview": true,
+  "vimMode": false
+}

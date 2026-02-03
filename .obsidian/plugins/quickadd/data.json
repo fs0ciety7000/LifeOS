@@ -1,0 +1,198 @@
+{
+  "choices": [
+    {
+      "id": "daily-note",
+      "name": "📅 Daily Note",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Daily Note.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{DATE:YYYY-MM-DD}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["01-Daily/{{DATE:YYYY}}"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "journal-perso",
+      "name": "📔 Journal Perso",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Journal Perso.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{DATE:YYYY-MM-DD}} - Journal"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["02-Journal/Perso"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "journal-couple",
+      "name": "💑 Journal Couple",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Journal Couple.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{DATE:YYYY-MM-DD}} - Couple"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["02-Journal/Couple"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "add-film",
+      "name": "🎬 Ajouter Film",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Film.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{VALUE}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["07-MediaDB/Films"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "add-serie",
+      "name": "📺 Ajouter Série",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Série.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{VALUE}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["07-MediaDB/Séries"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "add-jeu",
+      "name": "🎮 Ajouter Jeu",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Jeu.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{VALUE}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["07-MediaDB/Jeux"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "add-livre",
+      "name": "📚 Ajouter Livre",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Livre.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{VALUE}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["07-MediaDB/Livres"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "new-project",
+      "name": "🚀 Nouveau Projet",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Project.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{VALUE}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["03-Projects"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "research-note",
+      "name": "🔬 Note Research",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Research Note.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{VALUE}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["08-Research/Notes"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "quick-capture",
+      "name": "📥 Capture Rapide",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Quick Capture.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{DATE:YYYY-MM-DD-HHmm}} - {{VALUE}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["00-Inbox"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "web-clip",
+      "name": "🌐 Web Clip",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Web Clip.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{VALUE}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["05-Resources/Articles"],
+        "chooseWhenCreatingNote": false
+      }
+    },
+    {
+      "id": "meeting",
+      "name": "📅 Meeting",
+      "type": "Template",
+      "command": true,
+      "templatePath": "09-Templates/Meeting.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{DATE:YYYY-MM-DD}} - {{VALUE}}"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": ["03-Projects"],
+        "chooseWhenCreatingNote": false
+      }
+    }
+  ],
+  "macros": [],
+  "inputPrompt": "single"
+}

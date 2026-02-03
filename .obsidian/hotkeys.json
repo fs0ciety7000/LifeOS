@@ -1,0 +1,68 @@
+{
+  "app:go-back": [
+    {
+      "modifiers": ["Alt"],
+      "key": "ArrowLeft"
+    }
+  ],
+  "app:go-forward": [
+    {
+      "modifiers": ["Alt"],
+      "key": "ArrowRight"
+    }
+  ],
+  "quickadd:runQuickAdd": [
+    {
+      "modifiers": ["Ctrl", "Shift"],
+      "key": "A"
+    }
+  ],
+  "templater-obsidian:insert-templater": [
+    {
+      "modifiers": ["Ctrl", "Shift"],
+      "key": "T"
+    }
+  ],
+  "daily-notes": [
+    {
+      "modifiers": ["Ctrl", "Shift"],
+      "key": "D"
+    }
+  ],
+  "file-explorer:new-file": [
+    {
+      "modifiers": ["Ctrl"],
+      "key": "N"
+    }
+  ],
+  "command-palette:open": [
+    {
+      "modifiers": ["Ctrl", "Shift"],
+      "key": "P"
+    }
+  ],
+  "editor:toggle-checklist-status": [
+    {
+      "modifiers": ["Ctrl"],
+      "key": "Enter"
+    }
+  ],
+  "graph:open": [
+    {
+      "modifiers": ["Ctrl"],
+      "key": "G"
+    }
+  ],
+  "switcher:open": [
+    {
+      "modifiers": ["Ctrl"],
+      "key": "O"
+    }
+  ],
+  "global-search:open": [
+    {
+      "modifiers": ["Ctrl", "Shift"],
+      "key": "F"
+    }
+  ]
+}

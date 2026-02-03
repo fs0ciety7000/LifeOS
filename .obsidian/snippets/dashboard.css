@@ -1,0 +1,298 @@
+/*
+ * Life OS Dashboard Theme 2026
+ * Modern, vibrant, glass-morphism inspired
+ */
+
+/* ========== VARIABLES ========== */
+.theme-dark {
+  --dashboard-bg: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+  --accent-tertiary: #f093fb;
+  --text-glow: 0 0 20px rgba(102, 126, 234, 0.5);
+  --neon-pink: #ff006e;
+  --neon-cyan: #00f5d4;
+  --neon-purple: #9b5de5;
+  --neon-yellow: #fee440;
+}
+
+.theme-light {
+  --dashboard-bg: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(0, 0, 0, 0.1);
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+  --accent-tertiary: #f093fb;
+  --text-glow: none;
+  --neon-pink: #ff006e;
+  --neon-cyan: #00b4a0;
+  --neon-purple: #7c3aed;
+  --neon-yellow: #f59e0b;
+}
+
+/* ========== DASHBOARD PAGE ========== */
+.dashboard .markdown-preview-view {
+  padding: 2rem;
+}
+
+.dashboard .markdown-preview-sizer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ========== HEADINGS ========== */
+.dashboard h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  text-shadow: var(--text-glow);
+  letter-spacing: -0.02em;
+}
+
+.dashboard h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  border-bottom: 2px solid var(--card-border);
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dashboard h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+}
+
+/* ========== CARDS / SECTIONS ========== */
+.dashboard .dataview {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.25rem;
+  margin: 1rem 0;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard .dataview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+}
+
+/* ========== TABLES ========== */
+.dashboard table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.dashboard th {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+}
+
+.dashboard td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.dashboard tr:last-child td {
+  border-bottom: none;
+}
+
+.dashboard tr:hover td {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+/* ========== QUICK ACTIONS GRID ========== */
+.dashboard table:first-of-type {
+  background: transparent;
+}
+
+.dashboard table:first-of-type td {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  margin: 0.5rem;
+  padding: 1.25rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.dashboard table:first-of-type td:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+}
+
+.dashboard table:first-of-type a {
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ========== BLOCKQUOTES ========== */
+.dashboard blockquote {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-left: 4px solid var(--accent-primary);
+  border-radius: 0 12px 12px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* ========== TASKS ========== */
+.dashboard .task-list-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.dashboard .task-list-item:last-child {
+  border-bottom: none;
+}
+
+.dashboard .task-list-item-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 6px;
+  border: 2px solid var(--accent-primary);
+  margin-right: 0.75rem;
+}
+
+.dashboard .task-list-item-checkbox:checked {
+  background: var(--accent-gradient);
+}
+
+/* ========== LISTS ========== */
+.dashboard ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.dashboard .dataview ul li {
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+}
+
+.dashboard .dataview ul li::before {
+  content: "→";
+  color: var(--accent-primary);
+  margin-right: 0.75rem;
+  font-weight: bold;
+}
+
+.dashboard .dataview ul li:last-child {
+  border-bottom: none;
+}
+
+/* ========== LINKS ========== */
+.dashboard a.internal-link {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dashboard a.internal-link:hover {
+  color: var(--accent-tertiary);
+  text-shadow: 0 0 10px rgba(240, 147, 251, 0.5);
+}
+
+/* ========== HR / DIVIDERS ========== */
+.dashboard hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-secondary), transparent);
+  margin: 2rem 0;
+}
+
+/* ========== HABIT TRACKER TABLE ========== */
+.dashboard table:has(th:contains("Habitude")) td {
+  text-align: center;
+  min-width: 40px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .dashboard h1 {
+    font-size: 2rem;
+  }
+
+  .dashboard .markdown-preview-view {
+    padding: 1rem;
+  }
+
+  .dashboard table:first-of-type {
+    display: block;
+  }
+
+  .dashboard table:first-of-type td {
+    display: block;
+    margin: 0.5rem 0;
+  }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+  }
+}
+
+.dashboard .dataview.important {
+  animation: pulse-glow 2s infinite;
+}
+
+/* ========== NEON ACCENTS ========== */
+.dashboard .neon-pink {
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
+}
+
+.dashboard .neon-cyan {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.dashboard .neon-purple {
+  color: var(--neon-purple);
+  text-shadow: 0 0 10px var(--neon-purple);
+}
+
+/* ========== WIDE PAGE ========== */
+.wide-page .markdown-preview-sizer {
+  max-width: 100% !important;
+}

@@ -2,210 +2,267 @@
 cssclasses:
   - dashboard
   - wide-page
+banner: "99-Attachments/banner.png"
+banner_y: 0.5
 ---
 
-# 🌟 Life OS
+<div class="dashboard-header">
+<div class="profile-section">
 
-> *"La vie n'est pas ce qui nous arrive, mais ce que nous en faisons."*
+![[avatar.png|150]]
 
----
+</div>
+<div class="clock-section">
 
-## ⚡ Actions rapides
+# Dashboard 2026
 
-| | | | |
-|:---:|:---:|:---:|:---:|
-| [[09-Templates/Daily Note\|📅 Daily Note]] | [[09-Templates/Quick Capture\|📥 Capture]] | [[09-Templates/Journal Perso\|📔 Journal]] | [[09-Templates/Project\|🚀 Projet]] |
-| [[09-Templates/Film\|🎬 Film]] | [[09-Templates/Série\|📺 Série]] | [[09-Templates/Livre\|📚 Livre]] | [[09-Templates/Research Note\|🔬 Research]] |
-
----
-
-## 📅 Aujourd'hui
-
-```dataview
-LIST WITHOUT ID "[[" + file.name + "]]"
-FROM "01-Daily"
-WHERE file.day = date(today)
+```dataviewjs
+const now = new Date();
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const dateStr = now.toLocaleDateString('fr-FR', options);
+dv.paragraph(`**${dateStr.charAt(0).toUpperCase() + dateStr.slice(1)}**`);
 ```
 
-### ✅ Tâches du jour
-```dataview
-TASK
-FROM "01-Daily" OR "03-Projects"
-WHERE !completed AND (due = date(today) OR scheduled = date(today))
-LIMIT 10
-```
+</div>
+</div>
 
-### 📆 Agenda
+> [!quote|clean] 🎯 *2026's Plans and Milestones* 🚀
+
+---
+
+## Main Hub
+
+> [!multi-column]
+>
+>> [!note|green] 💚 Health
+>> - 🛏️ [[Sleep Log|Sleep]]
+>> - 🥗 [[Nutrition|Diet]]
+>> - 💪 [[Fitness Tracker|Fitness]]
+>> - 🧠 [[Mental Health|Mind]]
+>> - 🩺 [[Medical Timeline]]
+>
+>> [!note|yellow] 🏠 Homes
+>> - 🏡 [[Home]]
+>> - 📋 [[Life OS Home]]
+>> - 🎯 [[Goals 2026]]
+>> - 📅 [[Weekly Planning]]
+>> - 🗂️ [[Archive Home]]
+>
+>> [!note|cyan] 🔬 ADHD & Mind
+>> - 📊 [[Weekly Research]]
+>> - 💡 [[ADHD Tips]]
+>> - 🧪 [[My ADHD]]
+>> - 📚 [[Learning Hub]]
+>
+>> [!note|purple] 🗺️ Road Maps
+>> - 🐍 [[Python for AI]]
+>> - 🎯 [[Career Roadmap]]
+>> - ♟️ [[Chess Roadmap]]
+>> - 🧠 [[Machine Learning]]
+>> - 💭 [[Philosophy Path]]
+
+---
+
+> [!multi-column]
+>
+>> [!note|orange] 📊 Tracking
+>> - 📚 [[Bookshelf]]
+>> - 🎬 [[Movies]]
+>> - 📺 [[TV Shows]]
+>> - 🎮 [[Games]]
+>> - 🎵 [[Music]]
+>
+>> [!note|pink] 💭 Philosophy
+>> - 📜 [[Philosophical Views]]
+>> - 🙏 [[Philosophy & Religion]]
+>> - 💫 [[Life Philosophy]]
+>> - 🌱 [[Seeds of Doubt]]
+>
+>> [!note|blue] 🎨 Content Creation
+>> - 📝 [[Blog Ideas]]
+>> - 🎥 [[Video Projects]]
+>> - 💻 [[Dev Projects]]
+>> - *Soon...*
+
+---
+
+## Vault Info
+
+> [!multi-column]
+>
+>> [!note|gray] 📄 Recent file updates
+>> ```dataview
+>> LIST WITHOUT ID file.link
+>> FROM ""
+>> WHERE file.name != "🏠 Dashboard" AND !contains(file.path, "09-Templates")
+>> SORT file.mtime DESC
+>> LIMIT 8
+>> ```
+>
+>> [!note|teal] 🏷️ Tagged
+>> ```dataview
+>> LIST WITHOUT ID file.link
+>> FROM #favorite OR #priority
+>> LIMIT 6
+>> ```
+>
+>> [!note|indigo] 📈 Stats
+>> - 📁 **Files:** `$= dv.pages().length`
+>> - 📔 **Daily Notes:** `$= dv.pages('"01-Daily"').length`
+>> - 🎬 **Media Logged:** `$= dv.pages('"07-MediaDB"').length`
+>> - 📚 **Books:** `$= dv.pages('"07-MediaDB/Livres"').length`
+>> - 🔬 **Research:** `$= dv.pages('"08-Research"').length`
+
+---
+
+## 📅 On Today
+
+> [!multi-column]
+>
+>> [!note|clean wide-2] 📆 Recent Journal
+>> ```dataview
+>> TABLE WITHOUT ID
+>>   file.link as "Entry",
+>>   mood as "Mood"
+>> FROM "02-Journal/Perso"
+>> SORT file.ctime DESC
+>> LIMIT 4
+>> ```
+>
+>> [!note|clean wide-1] 🗓️ Calendar
+>> ```dataviewjs
+>> const today = dv.date("today");
+>> dv.header(4, today.toFormat("MMMM yyyy"));
+>> dv.paragraph("📍 **Today:** " + today.toFormat("EEEE, d"));
+>> ```
+>>
+>> [[01-Daily/2026/2026-02-03|→ Today's Note]]
+
+---
+
+## 🚀 Active Projects
+
 ```dataview
 TABLE WITHOUT ID
-  file.link as "Événement",
-  time as "Heure"
-FROM "03-Projects" OR "04-Areas"
-WHERE type = "meeting" AND date = date(today)
-SORT time ASC
-```
-
----
-
-## 📊 Vue d'ensemble
-
-### 📥 Inbox à traiter
-```dataview
-LIST WITHOUT ID "[[" + file.name + "|" + file.name + "]]"
-FROM "00-Inbox"
-WHERE processed = false
-SORT file.ctime DESC
-LIMIT 5
-```
-
-### 🚀 Projets actifs
-```dataview
-TABLE WITHOUT ID
-  file.link as "Projet",
-  status as "Statut",
-  priority as "Priorité",
-  date_deadline as "Deadline"
+  file.link as "📁 Project",
+  status as "📊 Status",
+  priority as "🎯",
+  due as "📅 Due"
 FROM "03-Projects"
-WHERE status = "🚧 en cours" OR status = "🎯 planifié"
+WHERE status != "✅ completed" AND status != "📦 archived"
 SORT priority ASC
-LIMIT 7
-```
-
-### ✅ Tâches en retard
-```dataview
-TASK
-FROM "03-Projects" OR "04-Areas"
-WHERE !completed AND due < date(today)
-LIMIT 5
+LIMIT 6
 ```
 
 ---
 
-## 📔 Journal récent
+## 📚 Currently Consuming
 
-### 📝 Dernières entrées perso
-```dataview
-TABLE WITHOUT ID
-  file.link as "Date",
-  mood as "Humeur"
-FROM "02-Journal/Perso"
-SORT file.ctime DESC
-LIMIT 3
-```
-
-### 💑 Dernières entrées couple
-```dataview
-TABLE WITHOUT ID
-  file.link as "Date",
-  quality as "Connexion"
-FROM "02-Journal/Couple"
-SORT file.ctime DESC
-LIMIT 3
-```
+> [!multi-column]
+>
+>> [!note|book] 📖 Reading
+>> ```dataview
+>> TABLE WITHOUT ID
+>>   file.link as "Book",
+>>   author as "Author",
+>>   "p." + current_page + "/" + pages as "Progress"
+>> FROM "07-MediaDB/Livres"
+>> WHERE status = "👀 en cours"
+>> LIMIT 3
+>> ```
+>
+>> [!note|tv] 📺 Watching
+>> ```dataview
+>> TABLE WITHOUT ID
+>>   file.link as "Show",
+>>   "S" + current_season + "E" + current_episode as "Progress"
+>> FROM "07-MediaDB/Séries"
+>> WHERE status = "👀 en cours"
+>> LIMIT 3
+>> ```
+>
+>> [!note|game] 🎮 Playing
+>> ```dataview
+>> TABLE WITHOUT ID
+>>   file.link as "Game",
+>>   playtime + "h" as "Time"
+>> FROM "07-MediaDB/Jeux"
+>> WHERE status = "🎮 en cours"
+>> LIMIT 3
+>> ```
 
 ---
 
-## 🎬 MediaDB
-
-### 📊 Statistiques
-```dataview
-TABLE WITHOUT ID
-  "🎬 Films" as "Type",
-  length(filter(rows, (r) => r.status = "✅ vu")) as "Complétés",
-  length(filter(rows, (r) => r.status = "👀 en cours")) as "En cours",
-  length(filter(rows, (r) => r.status = "🎬 à voir")) as "À voir"
-FROM "07-MediaDB/Films"
-GROUP BY true
-```
+## ⭐ Recently Completed
 
 ```dataview
 TABLE WITHOUT ID
-  "📺 Séries" as "Type",
-  length(filter(rows, (r) => r.status = "✅ terminée")) as "Complétées",
-  length(filter(rows, (r) => r.status = "👀 en cours")) as "En cours",
-  length(filter(rows, (r) => r.status = "📺 à voir")) as "À voir"
-FROM "07-MediaDB/Séries"
-GROUP BY true
-```
-
-### 👀 En cours
-```dataview
-TABLE WITHOUT ID
-  file.link as "Titre",
+  file.link as "Title",
   type as "Type",
-  choice(type = "serie", current_episode, choice(type = "livre", current_page + "/" + pages, choice(type = "jeu", completion + "%", ""))) as "Progression"
+  rating + "/10 ⭐" as "Rating",
+  date_finished as "Finished"
 FROM "07-MediaDB"
-WHERE status = "👀 en cours"
-SORT file.mtime DESC
-LIMIT 5
-```
-
-### ⭐ Récemment terminés (Top rated)
-```dataview
-TABLE WITHOUT ID
-  file.link as "Titre",
-  type as "Type",
-  rating as "Note"
-FROM "07-MediaDB"
-WHERE status = "✅ vu" OR status = "✅ terminée" OR status = "✅ lu" OR status = "✅ terminé"
+WHERE contains(status, "✅")
 SORT date_finished DESC
 LIMIT 5
 ```
 
 ---
 
-## 🔬 Recherche & Études
+## ✅ Tasks
 
-### 📚 Recherches actives
-```dataview
-TABLE WITHOUT ID
-  file.link as "Sujet",
-  domain as "Domaine",
-  status as "Statut"
-FROM "08-Research"
-WHERE status = "🔬 exploration" OR status = "📝 en cours"
-SORT file.mtime DESC
-LIMIT 5
-```
-
----
-
-## 📈 Habitudes (Cette semaine)
-
-| Habitude | L | M | M | J | V | S | D |
-|:---------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| 💧 Hydratation | | | | | | | |
-| 🏃 Exercice | | | | | | | |
-| 📚 Lecture | | | | | | | |
-| 🧘 Méditation | | | | | | | |
-| 😴 Sommeil 8h | | | | | | | |
-
----
-
-## 🔗 Navigation rapide
-
-### 📁 Dossiers
-| | | |
-|:---:|:---:|:---:|
-| [[00-Inbox/\|📥 Inbox]] | [[01-Daily/\|📅 Daily]] | [[02-Journal/\|📔 Journal]] |
-| [[03-Projects/\|🚀 Projects]] | [[04-Areas/\|🏠 Areas]] | [[05-Resources/\|📚 Resources]] |
-| [[06-Archive/\|📦 Archive]] | [[07-MediaDB/\|🎬 MediaDB]] | [[08-Research/\|🔬 Research]] |
-
-### 📊 Reviews
-| | | |
-|:---:|:---:|:---:|
-| [[Weekly Review\|📅 Weekly]] | [[Monthly Review\|📆 Monthly]] | [[Yearly Review\|📅 Yearly]] |
+> [!multi-column]
+>
+>> [!todo] 📋 Due Today
+>> ```tasks
+>> due today
+>> not done
+>> short mode
+>> limit 5
+>> ```
+>
+>> [!todo] 📅 Upcoming
+>> ```tasks
+>> due after today
+>> due before in 7 days
+>> not done
+>> short mode
+>> limit 5
+>> ```
+>
+>> [!done] ✅ Done Recently
+>> ```tasks
+>> done after 3 days ago
+>> short mode
+>> limit 5
+>> ```
 
 ---
 
-## 💡 Citation du jour
+## 💡 Quick Actions
 
-> *Ajoutez vos citations préférées ici et utilisez le plugin "Random Quote" pour les afficher aléatoirement.*
+| | | | |
+|:---:|:---:|:---:|:---:|
+| [[09-Templates/Daily Note\|📅 Daily]] | [[09-Templates/Quick Capture\|📥 Capture]] | [[09-Templates/Journal Perso\|📔 Journal]] | [[09-Templates/Project\|🚀 Project]] |
+| [[09-Templates/Film\|🎬 Film]] | [[09-Templates/Série\|📺 Series]] | [[09-Templates/Livre\|📚 Book]] | [[09-Templates/Jeu\|🎮 Game]] |
+
+---
+
+## 🔗 Navigation
+
+> [!multi-column]
+>
+>> **📁 Folders**
+>> [[00-Inbox/README|📥 Inbox]] • [[01-Daily/README|📅 Daily]] • [[02-Journal/README|📔 Journal]]
+>> [[03-Projects/README|🚀 Projects]] • [[04-Areas/README|🏠 Areas]] • [[07-MediaDB/README|🎬 Media]]
+>
+>> **📊 Reviews**
+>> [[Weekly Review|📅 Weekly]] • [[Monthly Review|📆 Monthly]] • [[Yearly Review|📅 Yearly]]
 
 ---
 
 <center>
 
-**🌟 Life OS v1.0** | Made with 💜 in Obsidian
+**✨ Life OS v2.0** | Made with 💜 in Obsidian | *Inspired by SlRvb*
 
 </center>
